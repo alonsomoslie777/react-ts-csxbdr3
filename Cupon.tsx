@@ -15,7 +15,7 @@ class Cupon extends Info {
     //console.log('json is:', this.state.fields);
   }
 
-  render() { 
+  render() {
     return (
       <div class="col-md-12">
         <div class="card">
