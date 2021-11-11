@@ -79,6 +79,8 @@ class Currencies extends Info {
                       <td style={{ verticalAlign: 'middle' }}>{key}</td>
 
                       <td style={{ verticalAlign: 'middle' }}>
+                        <label class="show_edit">{this.l('Code')}</label>
+                        <br />
                         <label>
                           <input
                             type="text"
@@ -92,10 +94,10 @@ class Currencies extends Info {
                           {this.l('Main Currency')}
                         </label>
                         <br />
-                        <label class="switch show_edit">
+                        <label class="switch">
                           <input
                             type="checkbox"
-                            class="checkbox show_edit"
+                            class="checkbox"
                             name={key + '[main]'}
                             value="yes"
                           />
@@ -104,13 +106,9 @@ class Currencies extends Info {
                       </td>
 
                       <td style={{ verticalAlign: 'middle' }}>
-                        <div class="edit_text"> {this.l('Field width')} </div>
-                        <label class="hide_edit hide_edit">
+                        <label>
                           {this.l('Field width')} <br />
-                          <select
-                            name={key + '[type]'}
-                            class="form-control show_edit"
-                          >
+                          <select name={key + '[type]'} class="form-control">
                             <option value="left">{this.l('Left')}</option>
                             <option value="right"> {this.l('Right')}</option>
                             <option value="left with space">
@@ -123,14 +121,8 @@ class Currencies extends Info {
                         </label>
                       </td>
                       <td style={{ verticalAlign: 'middle' }}>
-                        <div
-                          class="edit_text"
-                          style={{ display: 'inline-table' }}
-                        >
-                          {' '}
-                          {this.l('Rate(to main currency)')} : 1{' '}
-                        </div>
-                        <label class="hide_edit blockMultilang">
+                        {this.l('Rate(to main currency)')} <br />
+                        <label class="blockMultilang">
                           <input
                             type="text"
                             class="form-control show_edit"
