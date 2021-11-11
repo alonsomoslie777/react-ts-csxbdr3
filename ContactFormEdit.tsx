@@ -154,7 +154,7 @@ class ContactFormEdit extends Info {
                 {Object.entries(this.state.fields).map(([key, value]) => (
                   <>{this.formField(key)}</>
                 ))}
-                ;
+                
               </div>
               <div class="height20px"></div>
               <div class="col-md-4">
