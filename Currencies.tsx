@@ -79,13 +79,7 @@ class Currencies extends Info {
                       <td style={{ verticalAlign: 'middle' }}>{key}</td>
 
                       <td style={{ verticalAlign: 'middle' }}>
-                        <div
-                          class="edit_text"
-                          style={{ display: 'inline-table' }}
-                        >
-                          {' '}
-                        </div>
-                        <label class="hide_edit blockMultilang">
+                        <label>
                           <input
                             type="text"
                             class="form-control show_edit"
