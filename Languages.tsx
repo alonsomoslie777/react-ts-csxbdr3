@@ -310,16 +310,21 @@ class Languages extends Info {
                     </b>
                     :
                     <a href="#">
-                      {' '}
-                      <span class="fa fa-trash"></span>{' '}
-                    </a>{' '}
+                      <span class="fa fa-trash"></span>
+                    </a>
                     |
                     <a href="#">
-                      {' '}
-                      <span class="fa fa-pencil"></span>{' '}
-                    </a>{' '}
-                    |<span class="fa fa-home"></span> {this.l('Default')}
-                    <a href="#">{this.l('Make default')}</a>
+                      <span class="fa fa-pencil"></span>
+                    </a>
+                    {i == 0 ? (
+                      <>
+                        <span class="fa fa-home"></span> {this.l('Default')}
+                      </>
+                    ) : (
+                      <>
+                        <a href="#">{this.l('Make default')}</a>
+                      </>
+                    )}
                   </div>
                 ))}
               </div>
@@ -347,7 +352,7 @@ class Languages extends Info {
                     <option value={language.code}>{language.nativeName}</option>
                   ))}
                 </select>
-                <a href="${baseurl+'admin/general-settings/language?lang='+adminlang!}">
+                <a href="#">
                   <b>
                     <span class="fa fa-pencil"></span>
                   </b>
