@@ -7,24 +7,6 @@ class EmailConfig extends Info {
     this.state = {
       lang: 'en',
       rows: [],
-      currencies: {
-        AED: {
-          enable: '',
-          name: 'AED',
-          code: '&#1583;.&#1573;',
-          default: '',
-          type: ['left', 'right', 'left with space', 'right with space'],
-          rate: '1',
-        },
-        AFN: {
-          enable: '',
-          name: 'AFN',
-          code: '&#65;&#102;',
-          default: '',
-          type: ['left', 'right', 'left with space', 'right with space'],
-          rate: '1',
-        },
-      },
     };
   }
   componentDidMount() {
@@ -48,7 +30,7 @@ class EmailConfig extends Info {
               </div>
               <table class="table_admin_settings">
                 <tr>
-                  <th> {this.l('Global "From" Name')} </th>
+                  <th>{this.l('Global "From" Name')}</th>
                   <td>
                     <div class="col-md-12">
                       <input type="text" class="form-control" name="fromname" />
@@ -56,7 +38,7 @@ class EmailConfig extends Info {
                   </td>
                 </tr>
                 <tr>
-                  <th> {this.l('Global "From" Email')} </th>
+                  <th>{this.l('Global "From" Email')}</th>
                   <td>
                     <div class="col-md-12">
                       <input
@@ -68,7 +50,7 @@ class EmailConfig extends Info {
                   </td>
                 </tr>
                 <tr>
-                  <th> {this.l('SMTP Host Address')} </th>
+                  <th>{this.l('SMTP Host Address')}</th>
                   <td>
                     <div class="col-md-12">
                       <input type="text" class="form-control" name="host" />
@@ -76,7 +58,7 @@ class EmailConfig extends Info {
                   </td>
                 </tr>
                 <tr>
-                  <th> {this.l('SMTP Host Port')} </th>
+                  <th>{this.l('SMTP Host Port')}</th>
                   <td>
                     <div class="col-md-12">
                       <input type="text" class="form-control" name="port" />
@@ -85,7 +67,7 @@ class EmailConfig extends Info {
                 </tr>
 
                 <tr>
-                  <th> {this.l('SMTP Server Username')} </th>
+                  <th>{this.l('SMTP Server Username')}</th>
                   <td>
                     <div class="col-md-12">
                       <input
@@ -98,7 +80,7 @@ class EmailConfig extends Info {
                   </td>
                 </tr>
                 <tr>
-                  <th> {this.l('SMTP Server Password')} </th>
+                  <th>{this.l('SMTP Server Password')}</th>
                   <td>
                     <div class="col-md-12">
                       <input
@@ -124,7 +106,8 @@ class EmailConfig extends Info {
 
           <div class="col-md-6">
             <form action="#" method="post">
-              <h3>Send test mail</h3> <br />
+              <h3>Send test mail</h3>
+              <br />
               <div class="col-md-12">
                 {this.l('To')}
                 <br />
@@ -161,7 +144,7 @@ class EmailConfig extends Info {
               </div>
             </form>
             <div class="height20px"></div>
-            <h4> </h4>
+            <h4></h4>
           </div>
 
           <div class="height20px"></div>
