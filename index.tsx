@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import Hello from './Hello';
 
 //import CategoriesAddEdit from './data1/CategoriesAddEdit';
-import LanguageEdit from './LanguageEdit';
+import Menu from './Menu';
 import './bootstrap.css';
 import './style.css';
 
@@ -23,7 +23,7 @@ class App extends Component<AppProps, AppState> {
   render() {
     return (
       <div>
-        <LanguageEdit />
+        <Menu />
       </div>
     );
   }
