@@ -8,20 +8,51 @@ class Menu extends Info {
       lang: 'en',
       row: {},
       fields: {},
+      menuList: '',
       json: '{"autoload":null,"param":"website_menu","value":"Footer menu","value1": {"en":"<li><a href=\\"#\\" class=\\"simple_link\\">Categories</a><ul><li style=\\"opacity: 1;\\" class=\\"\\"><a href=\\"/cat/clothing\\" class=\\"simple_link\\">Clothing</a></li><li style=\\"opacity: 1;\\" class=\\"\\"><a href=\\"/cat/handbags\\" class=\\"simple_link\\">Handbags</a></li><li style=\\"opacity: 1;\\" class=\\"\\"><a href=\\"/cat/electronics\\" class=\\"simple_link\\">Electronics</a></li><li style=\\"opacity: 1;\\" class=\\"\\"><a href=\\"/cat/software\\" class=\\"simple_link\\">Software</a></li></ul></li><li class=\\"\\"><a href=\\"#\\" class=\\"simple_link\\">Quick Links</a><ul><li style=\\"opacity: 1;\\" class=\\"\\"><a href=\\"/orders-list\\" class=\\"simple_link\\">My orders</a></li><li><a href=\\"/cart/get\\" class=\\"simple_link\\">Cart</a></li><li><a href=\\"/checkout/step1\\" class=\\"simple_link\\">Checkout</a></li><li style=\\"opacity: 1;\\" class=\\"\\"><a href=\\"/wishlist\\" class=\\"simple_link\\">Wishlist</a></li><li><a href=\\"/signup/my-account\\" class=\\"simple_link\\">My Account</a></li></ul></li><li style=\\"opacity: 1;\\" class=\\"activeIn\\"><a href=\\"#\\" class=\\"simple_link\\">Policies</a><ul><li><a href=\\"/page/privacy-policy\\" class=\\"simple_link\\">Privacy Policy</a></li><li><a href=\\"/page/terms--conditions\\" class=\\"simple_link\\">Terms &amp; Conditions</a></li><li><a href=\\"/page/returns-policy\\" class=\\"simple_link\\">Returns Policy</a></li><li><a href=\\"/page/size-guide\\" class=\\"simple_link\\">Size Guide</a></li></ul></li>"},"value2":"footer"}',
     };
   }
   componentDidMount() {
     //alert(this.state.json);
-    this.setState({ row: JSON.parse(this.state.json) });
-    //console.log('json is:', this.state.fields);
+    var jsonParse = JSON.parse(this.state.json);
+
+    this.setState({ row: jsonParse, menuList: jsonParse['value1']['en'] });
+
+    var containerMenu = document.getElementById('menuListContainer');
+
+    containerMenu.addEventListener(
+      'mouseover',
+      (event) => this.menuHover(event),
+      false
+    );
+
+    containerMenu.addEventListener(
+      'mouseout',
+      (event) => this.menuOut(event),
+      false
+    );
   }
+
+  menuHover = (e) => {
+    var text =
+      '<div class="editBlock" > <a href="#" class="fa_move move_bdn"></a>' +
+      '<a href="#" class="fa_delete fa_small delete_ittem"></a>' +
+      '<a href="#" class="fa_edit fa_small"></a> <div>';
+
+    if (e.target.tagName == 'LI')
+      e.target.insertAdjacentHTML('beforeend', text);
+  };
+
+  menuOut = (e) => {
+    var el = document.getElementsByClassName('editBlock');
+    for (var i = 0; i < el.length; i++) el[i].remove();
+  };
 
   render() {
     return (
       <div class="col-md-12">
         <div class="col-md-12">
-          <h3>{this.state.row.value}</h3>
+          <h3>{this.state.row.value}</h3>]
         </div>
         <div class="col-sm-4">
           <div class="card">
@@ -240,7 +271,13 @@ class Menu extends Info {
                 <div class="clear"></div>
 
                 <div class="menu-box">
-                  <ul class="menu-list sortable"></ul>
+                  <ul
+                    class="menu-list sortable"
+                    id="menuListContainer"
+                    dangerouslySetInnerHTML={{
+                      __html: this.state.menuList,
+                    }}
+                  ></ul>
                 </div>
               </div>
             </div>
