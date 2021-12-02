@@ -35,17 +35,29 @@ class Menu extends Info {
 
   menuHover = (e) => {
     var text =
-      '<div class="editBlock" > <a href="#" class="fa_move move_bdn"></a>' +
+      '<div class="editBlock" style="background:#ccc;"> <a href="#" class="fa_move move_bdn"></a>' +
       '<a href="#" class="fa_delete fa_small delete_ittem"></a>' +
       '<a href="#" class="fa_edit fa_small"></a> <div>';
-
-    if (e.target.tagName == 'LI')
+    var el = document.getElementsByClassName('editBlock');
+    if (e.target.tagName == 'LI') {
+      for (var i = 0; i < el.length; i++) el[i].remove();
       e.target.insertAdjacentHTML('beforeend', text);
+    }
   };
 
   menuOut = (e) => {
+    /*
     var el = document.getElementsByClassName('editBlock');
-    for (var i = 0; i < el.length; i++) el[i].remove();
+    var par = e.target.parentNode.className;
+    console.log('par:' + par);
+    console.log('e.target.className:' + e.target.className);
+    if (
+      e.target.tagName == 'LI' &&
+      !e.target.className.includes('editBlock') &&
+      !par.includes('editBlock')
+    ) {
+      //for (var i = 0; i < el.length; i++) el[i].remove();
+    }*/
   };
 
   render() {
@@ -90,7 +102,6 @@ class Menu extends Info {
                 <div class="col-md-8">
                   <input
                     type="text"
-                    value=""
                     placeholder="#"
                     name="link"
                     class="form-control link_text_href"
@@ -102,7 +113,6 @@ class Menu extends Info {
                 <div class="col-md-8">
                   <input
                     type="text"
-                    value=""
                     placeholder="Home"
                     name="link"
                     class="form-control col-md-8 link_text"
