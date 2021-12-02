@@ -31,16 +31,54 @@ class Menu extends Info {
       (event) => this.menuOut(event),
       false
     );
+
+    containerMenu.addEventListener(
+      'click',
+      (event) => this.itemClick(event),
+      false
+    );
   }
+
+  removeMenu = (e) => {
+    alert('aaa');
+  };
+
+  dataHtml = () => {
+    return (
+      <div class="editBlock">
+        <a href="#" class="fa_move move_bdn"></a>
+        <a
+          href="#"
+          class="fa_delete fa_small delete_ittem"
+          onClick={this.removeMenu}
+        ></a>
+        <a href="#" class="fa_edit fa_small"></a>
+      </div>
+    );
+  };
+
+  itemClick = (e) => {
+    e.preventDefault();
+    var className = e.target.className;
+    if (className.includes('deleteRow')) {
+      var par = e.target.parentNode.parentNode;
+      var elem = par.getElementsByTagName('a');
+
+      alert(elem[0].className);
+    } else if (className.includes('editRow')) {
+      alert('edit');
+    }
+  };
 
   menuHover = (e) => {
     var text =
-      '<div class="editBlock" style="background:#ccc;"> <a href="#" class="fa_move move_bdn"></a>' +
-      '<a href="#" class="fa_delete fa_small delete_ittem"></a>' +
-      '<a href="#" class="fa_edit fa_small"></a> <div>';
+      '<div class="editBlock"> <a href="#" class="fa_move move_bdn moveRow"></a>' +
+      '<a href="#" class="fa_delete fa_small delete_ittem deleteRow"></a>' +
+      '<a href="#" class="fa_edit fa_small editRow"></a> </div>';
     var el = document.getElementsByClassName('editBlock');
     if (e.target.tagName == 'LI') {
       for (var i = 0; i < el.length; i++) el[i].remove();
+
       e.target.insertAdjacentHTML('beforeend', text);
     }
   };
@@ -49,13 +87,7 @@ class Menu extends Info {
     /*
     var el = document.getElementsByClassName('editBlock');
     var par = e.target.parentNode.className;
-    console.log('par:' + par);
-    console.log('e.target.className:' + e.target.className);
-    if (
-      e.target.tagName == 'LI' &&
-      !e.target.className.includes('editBlock') &&
-      !par.includes('editBlock')
-    ) {
+    if ( e.target.tagName == 'LI' ) {
       //for (var i = 0; i < el.length; i++) el[i].remove();
     }*/
   };
